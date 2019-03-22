@@ -47,7 +47,7 @@ services:
       - "./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
       - "./config/elasticsearch/plugins:/usr/share/elasticsearch/plugins"
   phpfpm:
-    image: 10up/phpfpm
+    image: 10up/phpfpm:7.2
     depends_on:
       - mysql
       - memcached
@@ -60,7 +60,6 @@ services:
     restart: always
     extra_hosts:
       - "docker-local.dev:172.18.0.1"
-      - "je.local:172.18.0.1"
   nginx:
     depends_on:
       - phpfpm

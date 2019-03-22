@@ -46,7 +46,7 @@ services:
       - "./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
       - "./config/elasticsearch/plugins:/usr/share/elasticsearch/plugins"
   phpfpm:
-    image: 10up/phpfpm
+    image: 10up/phpfpm:7.2
     depends_on:
       - mysql
       - memcached
@@ -67,8 +67,9 @@ services:
       - "443:443"
     image: nginx:latest
     volumes:
-      - "./wordpress:/var/www/html"
-      - "./config/nginx/default.conf:/etc/nginx/conf.d/default.conf"
-      - "./config/certs:/etc/nginx/certs"
-      - "./logs/nginx:/var/log/nginx"
+      # @see https://docs.docker.com/docker-for-mac/osxfs-caching/ for caching options. 
+      - "./wordpress:/var/www/html:delegated"
+      - "./config/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached"
+      - "./config/certs:/etc/nginx/certs:cached"
+      - "./logs/nginx:/var/log/nginx:cached"
     restart: always
