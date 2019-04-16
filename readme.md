@@ -23,7 +23,7 @@ The `/config/elasticsearch/plugins` folder is mapped to the plugins folder in th
 
 2. Clone the project
 	
-	`$ git clone git@github.com:log-oscon/WP-Docker-Construct.git <my-project-name>`
+	`$ git clone https://github.com/log-oscon/WP-Docker-Construct.git <my-project-name>`
 3. change to project directory 
 	
 	`$ cd <my-project-name>`
